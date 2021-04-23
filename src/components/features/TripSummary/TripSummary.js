@@ -6,7 +6,7 @@ import {Col} from 'react-flexbox-grid';
 
 const TripSummary = ({id, image, name, cost, days, tags}) => (
   <Col xs={12} sm={6} lg={4} className={styles.column}>
-    <Link to={`/trip/${id}`} className={styles.link}>
+    <Link to={`/trips/${id}`} className={styles.link}>
       <article className={styles.component}>
         <img src={image} alt={name} />
         <h3 className={styles.title}>{name}</h3>

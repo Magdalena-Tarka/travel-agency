@@ -12,7 +12,7 @@ import {Row, Col} from 'react-flexbox-grid';
 const CountrySummary = ({alpha3Code, name, flag, trips, region, subregion, languages, capital}) => (
 
   <Col xs={12}>
-    <Link to={`/country/${alpha3Code}`} className={styles.component}>
+    <Link to={`/countries/${alpha3Code}`} className={styles.component}>
       <DetailsBox variant='small light'>
         <DetailsImage variant='left'>
           <SideImage source={flag} />
