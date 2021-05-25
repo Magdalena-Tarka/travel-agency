@@ -6,7 +6,7 @@ describe('Component Hero', () => {
   it('should render without crashing', () => {
     const component = shallow(<Hero titleText='Lorem ipsum' imageSrc='image.jpg' />);
     expect(component).toBeTruthy();
-    console.log(component.debug());  // Aby sprawdzić, jak w tym momencie wyrenderuje się nasz komponent
+    //console.log(component.debug());  // Aby sprawdzić, jak w tym momencie wyrenderuje się nasz komponent
   });
   it('should throw error without required props', () => {
     expect(() => shallow(<Hero />)).toThrow();
