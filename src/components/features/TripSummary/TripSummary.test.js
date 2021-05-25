@@ -5,7 +5,7 @@ import TripSummary from './TripSummary';
 describe('Component TripSummary', () => {
   it('should generate link to correct path', () => {
     const tripId = 'abc';
-    const component = shallow(<TripSummary id={tripId}  image='image.jpg' name='description' cost='123.45' days={3} />);
+    const component = shallow(<TripSummary id={tripId} />);
     const expectedPath = `/trips/${tripId}`;
     expect(component.find('.link').prop('to')).toEqual(expectedPath);
   });
@@ -13,8 +13,7 @@ describe('Component TripSummary', () => {
   it('should render image with correct "src" and "alt" props', () => {
     const expectedSrc = 'image.jpg';
     const expectedAlt = 'description';
-    const component = shallow(<TripSummary id={'abc'} image={expectedSrc} name={expectedAlt} cost='123.45' days={3} />);
-    console.log(component.debug());
+    const component = shallow(<TripSummary id={'abc'} image={expectedSrc} name={expectedAlt} />);
     expect(component.find('img').prop('src')).toEqual(expectedSrc);
     expect(component.find('img').prop('alt')).toEqual(expectedAlt);
   });
@@ -23,7 +22,7 @@ describe('Component TripSummary', () => {
     const expectedName = 'name';
     const expectedCost = '$1,234.56';
     const expectedDays = 3;
-    const component = shallow(<TripSummary id='abc' image='image.jpg' name={expectedName} cost={expectedCost} days={expectedDays} />);
+    const component = shallow(<TripSummary id='abc' name={expectedName} cost={expectedCost} days={expectedDays} />);
     expect(component.find('.title').text()).toEqual(expectedName);
     expect(component.find('.details').childAt(1).text()).toEqual('from ' + expectedCost);
     expect(component.find('.details').childAt(0).text()).toEqual(expectedDays + ' days');
@@ -47,8 +46,7 @@ describe('Component TripSummary', () => {
   });
 
   it('should not render div with tags if prop "tags" is empty or false', () => {
-    const falseOrEmptyArray = [] || false;
-    const component = shallow(<TripSummary tags={falseOrEmptyArray} id='abc' image='image.jpg' name='description' cost='123.45' days={3} />);
-    expect(component.find('.tags')).toBeTruthy();
+    expect(shallow(<TripSummary />).exists('div.tags')).toEqual(false);
+    expect(shallow(<TripSummary tags={[]}/>).exists('div.tags')).toEqual(false);
   });
 });
