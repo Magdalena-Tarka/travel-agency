@@ -40,7 +40,7 @@ const OrderOption = ({name, type, id, setOrderOption, ...otherProps}) => {
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   id: PropTypes.string,
-  setOrderOption: PropTypes.func,
+  setOrderOption: PropTypes.func,  //props setOrderOption jest to funkcja, która ma otrzymywać obiekt w formacie {idOpcji: wartośćOpcji}
 };*/
 
 export default OrderOption;
