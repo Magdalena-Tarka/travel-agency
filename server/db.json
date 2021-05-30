@@ -279,6 +279,26 @@
       "tripId": "5cc1d10130dfa407e2e54e20",
       "tripCountry": "Turkey",
       "id": 12
+    },
+    {
+      "car-rental": "suv",
+      "accommodation": "hotel",
+      "features": [
+        "all-inclusive",
+        "kitchen",
+        "pool",
+        "security"
+      ],
+      "adults": 2,
+      "children": 2,
+      "name": "kamil",
+      "contact": "333333",
+      "start-date": "",
+      "totalCost": "$165,842",
+      "tripName": "Pleasant travel in cool Turkey",
+      "tripId": "5cc1d10130dfa407e2e54e20",
+      "tripCountry": "Turkey",
+      "id": 13
     }
   ]
 }
