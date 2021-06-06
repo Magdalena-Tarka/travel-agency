@@ -11,30 +11,6 @@ const mockProps = {
   description: 'def',
 };
 
-beforeAll(() => {
-  const utilsModule = jest.requireActual('../../../utils/formatTime.js');
-  utilsModule.formatTime = jest.fn(seconds => seconds);
-});
-
-describe('HappyHourAd', () => {
-
-  it('should render properly', () => {
-    const component = shallow(<HappyHourAd />);
-    expect(component).toBeTruthy();
-  });
-  
-  it('should render heading and description', () => {
-    const component = shallow(<HappyHourAd />);
-    expect(component.exists(select.title)).toEqual(true);
-    expect(component.exists(select.promoDescription)).toEqual(true);
-  });
-  
-  it('should render header title from prop "title"', () => {
-    const component = shallow(<HappyHourAd {...mockProps} />);
-    expect(component.find(select.title).text()).toEqual(mockProps.title);
-  });
-});
-
 const trueDate = Date;
 
 const mockDate = customDate => class extends Date {
@@ -95,15 +71,4 @@ describe('Component HappyHourAd with mocked Date and delay', () => {
   checkDescriptionAfterTime('11:57:58', 2, '120');
   checkDescriptionAfterTime('11:59:58', 1, '1');
   checkDescriptionAfterTime('13:00:00', 60 * 60, 22 * 60 * 60 + '');
-});
-
-describe('Component HappyHourAd with mocked Date render correct descripton', () => {
-  checkDescriptionAtTime('12:29:29', mockProps.description);
-  checkDescriptionAtTime('12:00:00', mockProps.description);
-  checkDescriptionAtTime('12:59:59', mockProps.description);
-});
-
-describe('Component HappyHourAd with mocked Date and delay render correct descripton', () => {
-  checkDescriptionAfterTime('11:59:58', 5, mockProps.description);
-  checkDescriptionAfterTime('12:59:58', 5, 23 * 60 * 60 - 3 + '');
 });
