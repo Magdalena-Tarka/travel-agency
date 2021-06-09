@@ -43,6 +43,14 @@
   object-fit: cover;
 }
 
+.daysToSummer {
+  z-index: 99;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 15%;
+}
+
 .happyHourAd {
   z-index: 99;
   position: absolute;

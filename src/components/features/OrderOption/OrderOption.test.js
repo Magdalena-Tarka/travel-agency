@@ -7,7 +7,6 @@ describe('Component OrderOption', () => {
   it('should render properly', () => {
     const component = shallow(<OrderOption name={'name'} type={'type'} />);
     expect(component).toBeTruthy();
-    console.log(component.debug());
   });
 
   it('should return empty object if called without required props', () => {
@@ -19,7 +18,6 @@ describe('Component OrderOption', () => {
     for(let type in optionTypes) {
       const expectedTitle = 'sampleName';
       const component = shallow(<OrderOption name={expectedTitle} type={type} />);
-      console.log(component.debug());
       expect(component.find('.title').text()).toEqual(expectedTitle);
     }
   });
@@ -88,7 +86,6 @@ for(let type in optionTypes){
     it(`renders ${optionTypes[type]}`, () => {
       expect(subcomponent).toBeTruthy();
       expect(subcomponent.length).toBe(1);
-      console.log(subcomponent.debug());
     });
 
     /* type-specific tests */
