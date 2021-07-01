@@ -23,11 +23,6 @@ describe('DaysToSummer', () => {
     expect(component.exists(select.countingDownDays)).toEqual(true);
     expect(component.exists(select.summerDescription)).toEqual(true);
   });
-
-  it('should render description from props', () => {
-    const component = shallow(<DaysToSummer {...mockProps} />);
-    expect(component.find(select.summerDescription).text()).toEqual(mockProps.descriptionDays);
-  });
 });
 
 const trueDate = Date;
@@ -60,11 +55,11 @@ const checkDaysAmountAtDate = (date, expectedDaysAmount) => {
 };
 
 describe('Component DaysToSummer with mocked Date', () => {
-  checkDaysAmountAtDate('2021-01-01', '171');
-  checkDaysAmountAtDate('2021-05-21', '31');
-  checkDaysAmountAtDate('2021-06-20', '1');
-  checkDaysAmountAtDate('2021-09-24', '270');
-  checkDaysAmountAtDate('2021-12-31', '172');
+  checkDaysAmountAtDate('2022-01-01', '171');
+  checkDaysAmountAtDate('2022-05-21', '31');
+  checkDaysAmountAtDate('2022-06-20', '1');
+  checkDaysAmountAtDate('2022-09-24', '270');
+  checkDaysAmountAtDate('2029-12-31', '172');
 });
 
 const checkDescriptionAtDate = (date, expectedDescription) => {
@@ -80,25 +75,19 @@ const checkDescriptionAtDate = (date, expectedDescription) => {
 };
 
 describe('Component DaysToSummer with mocked Date render correct descripton', () => {
-  checkDescriptionAtDate('2021-03-14', mockProps.descriptionDays);
-  checkDescriptionAtDate('2021-06-19', mockProps.descriptionDays);
-  checkDescriptionAtDate('2021-06-20', mockProps.descriptionDay);
+  checkDescriptionAtDate('2022-03-14', mockProps.descriptionDays);
+  checkDescriptionAtDate('2022-06-19', mockProps.descriptionDays);
+  checkDescriptionAtDate('2022-06-20', mockProps.descriptionDay);
 });
 
-const checkComponentAtDate = (date, expected) => {
-  it('should not render when its summer', () => {
-    global.Date = mockDate(`${date}T00:00:01.135Z`);
+describe('Component DaysToSummer with mocked Date should not render days amount', () => {
+  checkDaysAmountAtDate('2022-06-22', '');
+  checkDaysAmountAtDate('2022-08-01', '');
+  checkDaysAmountAtDate('2022-09-23', '');
+});
 
-    const component = shallow(<DaysToSummer />);
-    expect(component.find(select.daysToSummer)).toEqual(expected);
-    console.log(component.debug());
-
-    global.Date = trueDate;
-  });
-};
-
-describe('Component DaysToSummer with mocked Date should not render', () => {
-  checkComponentAtDate('2021-06-21', {});
-  checkComponentAtDate('2021-08-19', {});
-  checkComponentAtDate('2021-09-23', {});
+describe('Component DaysToSummer with mocked Date should not render any descripton', () => {
+  checkDescriptionAtDate('2022-06-22', '');
+  checkDescriptionAtDate('2022-08-01', '');
+  checkDescriptionAtDate('2022-09-22', '');
 });
